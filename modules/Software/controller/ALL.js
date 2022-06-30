@@ -33,7 +33,7 @@ const addTest = async (req, res) => {
 const getLasttest = async (req, res) => {
     try {
         // const get = await allModel.findOne({ LinkOwner: req.params.id }, {}, { sort: { 'createdAt': -1 } }).populate("LinkOwner");
-        const get = await allModel.findOne({}, {}, { sort: { 'createdAt': -1 } }).populate("LinkOwner");
+        const get = await allModel.findOne({ LinkOwner: req.params.id }, {}, { sort: { 'createdAt': -1 } }).populate("LinkOwner");
         res.json({ message: "Done", get });
     } catch (error) {
         res.json({ error: error.message });
