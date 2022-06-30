@@ -10,7 +10,7 @@ const addLink = async (req, res) => {
 }
 
 const getLinkSoftware = async (req, res) => {
-    const get = await linkModel.findOne({ _id: req.params.id }, {}, { sort: { 'createdAt': -1 } });
+    const get = await linkModel.findOne({}, {}, { sort: { 'createdAt': -1 } });
     res.json({ message: "Done", get });
 }
 
