@@ -2,12 +2,16 @@ const userModel = require('../../../model/user.model');
 const bcrypt = require("bcrypt");
 
 const addUser = async (req, res, next) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, Repassword } = req.body;
 
     const user = await userModel.findOne({ email: email });
     if (user) {
-        res.json({ message: "email is already exist" })
-    } else {
+        res.json({ error: "email is already exist" })
+    }
+    else if (password !== Repassword) {
+        res.json({ error: "password not equal Repassword" })
+    }
+    else {
         bcrypt.hash(password, 12, async function (err, hash) {
             if (err) throw new Error(err);
             const user = await userModel.insertMany({
@@ -31,14 +35,14 @@ const authorization = async (req, res) => {
     try {
         const user = await userModel.findOne({ email });
         if (!user) {
-            res.json({ message: "Email is not found" })
+            res.json({ error: "Email is not found" })
         } else {
             const match = await bcrypt.compare(password, user.password);
             if (match) {
                 res.json({ message: "login success", data: user })
             }
             else {
-                res.json({ message: "password is not correct" })
+                res.json({ error: "password is not correct" })
             }
         }
     } catch (error) {

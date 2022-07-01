@@ -6,6 +6,7 @@ module.exports = {
             name: joi.string().required(),
             email: joi.string().required(),
             password: joi.string().required(),
+            Repassword: joi.string().required()
         })
     },
     signInSchema: {
