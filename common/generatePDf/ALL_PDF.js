@@ -6,7 +6,7 @@ const { createResulte } = require("./SEO_PDF");
 
 
 let SEO_data;
-async function ALL_PDF(Resulte, path) {
+async function ALL_PDF(selenium, Resulte, path) {
     let doc = new PDFDocument({ size: "A4", margin: 50 });
     await generateHeader(doc, Resulte);
     SEO_data = createResulte(Resulte)
@@ -14,10 +14,31 @@ async function ALL_PDF(Resulte, path) {
     // createResulte(Resulte);
     generateALL(doc, Resulte);
     generateScore(doc, Resulte, 430, 470)
+    generateselenium(doc, selenium)
     doc.end();
     doc.pipe(fs.createWriteStream(path));
 }
 
+function generateselenium(doc, selenium) {
+    doc
+        .fontSize(20)
+        .fillColor("red")
+        .text("Login & Registeration :", 50, 530)
+        .fontSize(11)
+        .fillColor("black")
+        .text("Login pass :", 50, 570)
+        .text(selenium.loginPass, 120, 570)
+
+        .text("Login Failure :", 180, 570)
+        .text(selenium.loginFailure, 255, 570)
+
+        .text("Registration Pass :", 305, 570)
+        .text(selenium.registrationPass, 400, 570)
+
+        .text("Registration Failure :", 440, 570)
+        .text(selenium.registrationFailure, 550, 570)
+
+}
 
 function generateALL(doc, Resulte) {
     console.log(Resulte);

@@ -7,6 +7,9 @@ const ALLRouter = require('../modules/Software/routers/ALL.router');
 
 const linkRouter = require('../modules/Link/Link.router');
 const pdfRouter = require('../modules/Pdfs/Pdf.router');
+
+const seleniumRouter = require('../modules/Software/routers/selenium.router');
+
 module.exports = {
     userRouter,
     ALLRouter,
@@ -14,5 +17,6 @@ module.exports = {
     speedRouter,
     SEO,
     linkRouter,
-    pdfRouter
+    pdfRouter,
+    seleniumRouter
 }

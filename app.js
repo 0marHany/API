@@ -8,7 +8,8 @@ const {
     speedRouter,
     SEO,
     linkRouter,
-    pdfRouter
+    pdfRouter,
+    seleniumRouter
 } = require('./router/allRouter');
 const app = express();
 const cors = require('cors'); //  for cross origin resource sharing  
@@ -24,7 +25,8 @@ app.use(
     speedRouter,
     SEO,
     linkRouter,
-    pdfRouter
+    pdfRouter,
+    seleniumRouter
 )
 
 app.post('/sendEmail/:id', async (req, res) => {
