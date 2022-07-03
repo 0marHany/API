@@ -43,31 +43,31 @@ const speedSchema = mongoose.Schema({
         required: true
     },
     LH_TBT: {
-        type: String,
+        type: Number,
         required: true
     },
     LH_SI: {
-        type: String,
+        type: Number,
         required: true
     },
     LH_FCP: {
-        type: String,
+        type: Number,
         required: true
     },
     LH_TTI: {
-        type: String,
+        type: Number,
         required: true
     },
     LH_CLS: {
-        type: String,
+        type: Number,
         required: true
     },
     LH_LCP: {
-        type: String,
+        type: Number,
         required: true
     },
     PR_Precentage: {
-        type: String,
+        type: Number,
         required: true
     },
     LinkOwner: {
