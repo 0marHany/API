@@ -39,7 +39,7 @@ function createResulte(Resulte) {
         } else if (resulte[i] >= 0 && resulte[i] <= 0.49) {
             resulte[i] = 'red'
         }
-        else if (resulte[i] >= 0.9 && resulte[i] <= 1) {
+        else if (resulte[i] >= 0.90 && resulte[i] <= 1) {
             resulte[i] = 'green'
         }
         else {
