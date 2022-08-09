@@ -36,7 +36,13 @@ function createResulte(Resulte) {
             resulte[i] = 'green'
         } else if (resulte[i] === "SLOW") {
             resulte[i] = 'red'
-        } else {
+        } else if (resulte[i] >= 0 && resulte[i] <= 0.49) {
+            resulte[i] = 'red'
+        }
+        else if (resulte[i] >= 0.9 && resulte[i] <= 1) {
+            resulte[i] = 'green'
+        }
+        else {
             resulte[i] = '#ad7900'
         }
     }
