@@ -11,7 +11,7 @@ const userSchema = mongoose.Schema({
     timestamps: true
 })
 
-// Hash Password With Hook
+//Hash Password With Hook
 userSchema.pre('save', async function (next) {
     this.password = await bcrypt.hash(this.password, 12);
     next();
