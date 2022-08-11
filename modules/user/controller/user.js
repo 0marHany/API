@@ -12,25 +12,28 @@ const addUser = async (req, res, next) => {
         res.json({ error: "password not equal Repassword" })
     }
     else {
-        bcrypt.hash(password, 12, async function (err, hash) {
-            if (err) throw new Error(err);
-            const user = await userModel.insertMany({
+        try {
+            // ** if you want to use bcrypt 
+            // bcrypt.hash(password, 12, async function (err, hash) {
+            // if (err) throw new Error(err);
+            const user = new userModel({
                 name,
                 email,
-                password: hash,
+                password,
             })
+            const userCreated = await user.save();
+            res.json({ message: 'Done', user: userCreated })
+            // });
+        } catch (error) {
+            res.json({ error: error.message });
+        }
 
-            try {
-                res.json({ message: 'Done', user: user[0]._id })
-            } catch (error) {
-                res.json({ error: error.message });
-            }
-        });
     }
 }
 
 
 const authorization = async (req, res) => {
+
     const { email, password } = req.body;
     try {
         const user = await userModel.findOne({ email });
